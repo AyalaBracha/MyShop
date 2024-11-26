@@ -35,6 +35,8 @@ const createUser = async () => {
             body: JSON.stringify(newUser)
 
         });
+        //if status==400
+        //weak password
         if (!responsePost.ok) {
             throw new Error(`HTTP error! status:${response.status}`)
         }
@@ -88,7 +90,7 @@ const checkPassword =async () => {
             },
             body: JSON.stringify(password)});
             const data = await response.json()
-        progress.value = data + 1
+        progress.value = data + 1//why +1?
         }
     catch(error) {
        console.log(error)
@@ -111,6 +113,8 @@ const updateUserDetails = async () => {
             body: JSON.stringify(newUser)
 
         });
+        //if status==400
+        //weak password
         if (!responsePost.ok) {
             throw new Error(`HTTP error! status:${response.status}`)
         }
