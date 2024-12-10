@@ -11,7 +11,7 @@ namespace Reposetories
         {
             this.myShop = myShop;
         }
-        List<User> users = new();
+        List<User> users = new();//
         //public async Task<User> Get()
         //{
         //    await myShop.Users.GetAsyncEnumerator()
@@ -30,7 +30,9 @@ namespace Reposetories
         public async Task<User> Post(User user)
         {
             await myShop.Users.AddAsync(user);
+            //var res=await myShop.Users.AddAsync(user);
             await myShop.SaveChangesAsync();
+            //return res- the created user with the id
             return user;
 
         }
