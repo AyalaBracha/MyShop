@@ -40,6 +40,7 @@ const deleteFromCart = (product) => {
             break;
     }
     products.splice(i, 1);
+    //use indexOf instead of for
     sessionStorage.setItem("shopingBag", JSON.stringify(products))
     drawProducts()
 }
