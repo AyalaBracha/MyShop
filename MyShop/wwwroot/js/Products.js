@@ -5,7 +5,8 @@
     sessionStorage.setItem("shopingBag", JSON.stringify(product))
     document.querySelector("#ItemsCountText").textContent = product.length
     filterProducts()
-    drawCategory()
+    drawCategory()//יותר נכון לעשות ההפך- לקרוא לפונקציה ששולפת את הקטגוריות מהשרת והיא תקרא תשלח לפונקציה שמציירת אותם על המסך
+    //כמו שעשית עם המוצרים
 } )
 const getData = async() => {
 
@@ -92,7 +93,7 @@ const addToCart = (product) => {
     sessionStorage.setItem("shopingBag", JSON.stringify(products))
     document.querySelector("#ItemsCountText").textContent = parseInt(document.querySelector("#ItemsCountText").textContent)+1
     }
-    const addCategory = async () => {
+    const addCategory = async () => {//? it's not add it's get
         try {
             const responsePost = await fetch('api/categories', {
                 method: 'GET',
@@ -143,6 +144,7 @@ const filterCategory=(category,index)=>{
     else {
         let categories = sessionStorage.getItem("category")
         categories = JSON.parse(categories)
+        //use indexOf instead of for
         let i = 0;
         for (; i < categories.length; i++) {
             if (categories[i] == category.id)
