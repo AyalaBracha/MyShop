@@ -4,6 +4,6 @@ namespace Reposetories
 {
     public interface IRatingReposetories
     {
-        void Post(Rating rating);
+        Task Post(Rating rating);
     }
 }
