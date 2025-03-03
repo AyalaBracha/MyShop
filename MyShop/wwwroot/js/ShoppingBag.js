@@ -81,7 +81,7 @@ const placeOrder =async () => {
                 userId: user,
                 date:"2025-01-05",
                 orderItems: products,
-                sum:1000
+                sum:sum
                 })
 
             });

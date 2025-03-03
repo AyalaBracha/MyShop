@@ -1,6 +1,6 @@
 ﻿addEventListener("load", () => {
     let product = JSON.parse(sessionStorage.getItem("shopingBag")) || []
-    let category = JSON.parse(sessionStorage.getItem("category")) || []
+    let category =  []
     sessionStorage.setItem("category", JSON.stringify(category))
     sessionStorage.setItem("shopingBag", JSON.stringify(product))
     document.querySelector("#ItemsCountText").textContent = product.length
