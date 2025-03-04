@@ -9,7 +9,7 @@ each with specific responsibilities.
 
 API Documentation
 The API is documented using Swagger. You can access the API documentation via the following link:
-https://localhost:7147/swagger/index.html
+https://localhost:5131/swagger/index.html
 
 Project Structure
 
