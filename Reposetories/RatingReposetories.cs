@@ -19,7 +19,7 @@ namespace Reposetories
         public async Task Post(Rating rating)
         {
 
-            string connaction = "data source=srv2\\pupils;initial catalog=MyShop_327707238;Integrated Security=SSPI;Persist Security Info=False;TrustServerCertificate=true";
+            string connaction = "data source=srv2\\pupils;initial catalog=MyShop_214935017;Integrated Security=SSPI;Persist Security Info=False;TrustServerCertificate=true";
             string query = "INSERT INTO RATING (HOST,METHOD,PATH,REFERER,USER_AGENT,Record_Date)" +
                 "VALUES (@Host,@Method,@Path,@Referer,@UserAgent,@RecordDate)";
 

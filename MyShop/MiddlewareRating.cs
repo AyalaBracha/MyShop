@@ -19,7 +19,7 @@ namespace MyShop
             _next = next;
         }
 
-        public  Task Invoke(HttpContext httpContext,IRatingServicess ratingService)
+        public async  Task Invoke(HttpContext httpContext,IRatingServicess ratingService)
         {
             //            •	HOST - כתובת האתר בה אנו גולשים כעת
             //•	METHOD - המתודה אליה נגשנו)
@@ -35,8 +35,8 @@ namespace MyShop
             ratin.Referer = httpContext.Request.Headers.Referer;
             ratin.RecordDate = DateTime.Now;
             //ratin.Host= httpContext.
-           ratingService.Post(ratin);
-            return _next(httpContext);
+          await ratingService.Post(ratin);
+            await _next(httpContext);
         }
     }
 

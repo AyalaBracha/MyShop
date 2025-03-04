@@ -16,9 +16,9 @@ namespace Servicess
             this.reposetory = reposetory;
 
         }
-        public void Post(Rating rating)
+        public async Task Post(Rating rating)
         {
-             reposetory.Post(rating);
+            await reposetory.Post(rating);
         }
     }
 }
