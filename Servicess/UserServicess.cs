@@ -12,12 +12,12 @@ namespace Servicess
     public class UserServicess : IUserServicess
     {
         IUserReposetory resposetory;
-       private readonly ILogger<UserServicess> logger;
+       
 
-        public UserServicess(IUserReposetory resposetory, ILogger<UserServicess> logger)
+        public UserServicess(IUserReposetory resposetory)
         {
             this.resposetory = resposetory;
-            this.logger = logger;
+            
         }
 
         public async Task<User> Get(int id)
@@ -35,7 +35,7 @@ namespace Servicess
         public async Task<User> Login(string email, string password)
         {
             User user =await resposetory.Login(email, password);
-          logger.LogInformation($"{user.Id}, {user.Email}, {user.FirstName}, {user.LastName} login to app!!");
+          
             return user;
 
         }

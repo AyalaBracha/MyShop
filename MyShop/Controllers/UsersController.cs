@@ -16,10 +16,12 @@ namespace MyShop.Controllers
     {
         IUserServicess servicess;
         IMapper _mapper;
-        public UsersController(IUserServicess servicess, IMapper mapper)
+        private readonly ILogger<UserServicess> logger;
+        public UsersController(IUserServicess servicess, IMapper mapper, ILogger<UserServicess> logger)
         {
             this.servicess = servicess;
             _mapper = mapper;
+            this.logger = logger;
         }
 
 
@@ -67,8 +69,10 @@ namespace MyShop.Controllers
         public async Task<ActionResult<User>> Login([FromQuery] string email, [FromQuery] string password)
         {
             User user = await servicess.Login(email, password);
-            if (user != null)
+            if (user != null) { logger.LogInformation($"{user.Id}, {user.Email}, {user.FirstName}, {user.LastName} login to app!!");
                 return Ok(_mapper.Map<User, GetByIdUserDTO>(user));
+            }
+               
 
             return NoContent();
 

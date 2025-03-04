@@ -153,7 +153,7 @@ const updateUserDetails = async () => {
             const dataPost = await responsePost.json();
             alert("עודכן בהצלחה!!😂😋😍🥰😄😃")
             window.location.href = 'ShoppingBag.html'
-            //sessionStorage.setItem("User", dataPost.userId);
+            
 
 
         }

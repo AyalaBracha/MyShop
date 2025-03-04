@@ -32,7 +32,7 @@ namespace MyShop
             ratin.Host = httpContext.Request.Host.ToString();
             ratin.Path = httpContext.Request.Path.Value.ToString();
             ratin.UserAgent = httpContext.Request.Headers.UserAgent.ToString();
-            ratin.Referer = httpContext.Request.Headers.Referer;
+            ratin.Referer = httpContext.Request.Headers.Referer.ToString();
             ratin.RecordDate = DateTime.Now;
             //ratin.Host= httpContext.
           await ratingService.Post(ratin);

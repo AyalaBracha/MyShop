@@ -1,6 +1,6 @@
 ﻿addEventListener("load", () => {
-    let user = JSON.parse(sessionStorage.getItem("User")) || []
-    sessionStorage.setItem("User", JSON.stringify(user))
+    let shopingBag = JSON.parse(sessionStorage.getItem("shopingBag")) ||[]
+    sessionStorage.setItem("shopingBag", JSON.stringify(shopingBag))
     drawProducts() 
 })
 const drawTemplate = (product) => {
@@ -59,8 +59,8 @@ const generateDate = () => {
 const placeOrder =async () => {
     shopingBag = JSON.parse(sessionStorage.getItem("shopingBag")) || []
     console.log(shopingBag)
-    let user = JSON.parse(sessionStorage.getItem("User")) || []
-    if (user.length != 0 && shopingBag.length != 0) {
+    let user = JSON.parse(sessionStorage.getItem("User")) || null
+    if (user != null && shopingBag.length != 0) {
         let products = []
         let sum = 0;
         for (let i = 0; i < shopingBag.length;i++) {

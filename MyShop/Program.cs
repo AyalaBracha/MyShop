@@ -18,7 +18,7 @@ builder.Services.AddScoped<IOrderReposetories, OrderReposetories>();
 builder.Services.AddScoped<IRatingServicess, RatingServicess>();
 builder.Services.AddScoped<IRatingReposetories, RatingReposetories>();
 builder.Services.AddDbContext<MyShop214935017Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("School")));
-
+builder.Services.AddMemoryCache();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -34,6 +34,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseErrorHandlingMiddleware();
+
 app.UseMiddlewareRating();
 
 // Configure the HTTP request pipeline.
