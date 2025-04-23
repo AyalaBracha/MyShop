@@ -18,7 +18,7 @@ const getDataRfomForm = () => {
 const updateUserDetails =async () => {
     const newUser = getDataRfomForm();
     const Id =sessionStorage.getItem("User")
-    alert(Id)
+    //alert(Id)
     alert(JSON.stringify(newUser))
     try {
         const responsePost = await fetch(`api/Users/${Id}`, {
