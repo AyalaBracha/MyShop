@@ -5,6 +5,7 @@ using System.Text.Json;
 using static System.Net.Mime.MediaTypeNames;
 using AutoMapper;
 using DTO;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,11 +18,13 @@ namespace MyShop.Controllers
         IUserServicess servicess;
         IMapper _mapper;
         private readonly ILogger<UserServicess> logger;
-        public UsersController(IUserServicess servicess, IMapper mapper, ILogger<UserServicess> logger)
+        private readonly TokenService _tokenService;
+        public UsersController(IUserServicess servicess, IMapper mapper, ILogger<UserServicess> logger, TokenService tokenService)
         {
             this.servicess = servicess;
             _mapper = mapper;
             this.logger = logger;
+            _tokenService = tokenService;
         }
 
 
@@ -73,8 +76,7 @@ namespace MyShop.Controllers
             {
                 logger.LogInformation($"{user.Id}, {user.Email}, {user.FirstName}, {user.LastName} login to app!!");
                 // יצירת טוקן JWT
-                var tokenService = HttpContext.RequestServices.GetService(typeof(TokenService)) as TokenService;
-                var token = tokenService.GenerateToken(user.Email, user.Id.ToString(), "user.Role");
+                var token = _tokenService.GenerateToken(user.Email, user.Id.ToString(), "user.Role.ToString()");
                 Response.Cookies.Append("jwtToken", token, new CookieOptions
                 {
                     HttpOnly = true,
@@ -92,6 +94,7 @@ namespace MyShop.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<ActionResult<User>> Put(int id, [FromBody] UserDTO userToUpdate)
         {
 
