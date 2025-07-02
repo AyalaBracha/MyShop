@@ -69,7 +69,19 @@ namespace MyShop.Controllers
         public async Task<ActionResult<User>> Login([FromQuery] string email, [FromQuery] string password)
         {
             User user = await servicess.Login(email, password);
-            if (user != null) { logger.LogInformation($"{user.Id}, {user.Email}, {user.FirstName}, {user.LastName} login to app!!");
+            if (user != null)
+            {
+                logger.LogInformation($"{user.Id}, {user.Email}, {user.FirstName}, {user.LastName} login to app!!");
+                // יצירת טוקן JWT
+                var tokenService = HttpContext.RequestServices.GetService(typeof(TokenService)) as TokenService;
+                var token = tokenService.GenerateToken(user.Email, user.Id.ToString(), "user.Role");
+                Response.Cookies.Append("jwtToken", token, new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Strict,
+                    Expires = DateTimeOffset.UtcNow.AddHours(1)
+                });
                 return Ok(_mapper.Map<User, GetByIdUserDTO>(user));
             }
                
