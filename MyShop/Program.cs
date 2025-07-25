@@ -63,8 +63,8 @@ if (app.Environment.IsDevelopment())
 app.UseErrorHandlingMiddleware();
 
 app.UseMiddlewareRating();
-app.UseMiddleware<MyShop.JwtCookieMiddleware>();
-
+ app.UseMiddleware<MyShop.CspMiddleware>();
+//  
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
