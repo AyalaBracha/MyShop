@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 namespace Reposetories
 {
 
-
+    /// <summary>
+    /// fgh
+    /// </summary>
     public class CategoryReposetories : ICategoryReposetories
     {
         MyShop214935017Context myShop;
